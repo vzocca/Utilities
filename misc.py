@@ -26,6 +26,7 @@ def clean_str(s):
     else:
         return s
     
+    
 
 def date_folder_create():
     today = datetime.now()
@@ -38,8 +39,8 @@ def date_folder_create():
 pattern = r'( N\.\d+ | N\. \d+ |_\d+|\d+|-)'    
 l = [re.split(pattern, f.split('-')[0])[0].strip() for f in os.listdir(home)]
 l = [clean_str(f) for f in l]
+l = [f.split(".pdf")[0] for f in l]
 
 print(l)
 print(set(l) )
 
-    

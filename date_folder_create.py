@@ -17,3 +17,7 @@ try:
     os.mkdir(home + today.strftime('%Y-%m-%d'))
 except (FileExistsError):
     os.mkdir(home + today.strftime('%Y-%m-%d') + '-bis')
+    
+    
+l = [f.split('-')[0] for f in os.listdir(home)]
+l

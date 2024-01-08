@@ -20,14 +20,14 @@ def open_pdf_file(file_path):
     except Exception as e:
         print(f"Error opening the PDF file: {e}")
         
-def initial_page():
+def initial_page(name, phone_number):
     #c = canvas.Canvas(f"{num_parts}_parts_dates.pdf", pagesize=letter)
     # First Page: Bullet Journal
     c.setFont("Helvetica-Bold", 30)
     c.drawString(180, 600, "Bullet Journal")
     c.setFont("Helvetica", 12)
-    c.drawString(50, 550, "Valentino Zocca")
-    c.drawString(50, 530, "202 640 1381")
+    c.drawString(50, 550, name)
+    c.drawString(50, 530, phone_number)
     c.showPage()
     
 def mental_inventory(c):
@@ -171,7 +171,7 @@ def create_pdf(num_parts):
     # Set the gap between the parts
     gap = (792-2*y_border)/num_parts
     
-    initial_page()
+    initial_page("Valentino Zocca", "202 640 1381")
     
     mental_inventory(c)
     

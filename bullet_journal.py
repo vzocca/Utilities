@@ -34,11 +34,10 @@ def mental_inventory(c):
     #c.setPageSize((792, 612))  # Set landscape layout
     
     # Set initial positions for the page
-    gap = 30
+    initial_y_position = 30
     
     page_width, page_height = letter
-    initial_y_position = gap
-    
+  
     x_pos = [i * page_height//3 + 50  for i in range(3)]
     c.rotate(90)
     
@@ -48,21 +47,17 @@ def mental_inventory(c):
     c.drawString(page_width/2. + 10, -initial_y_position, "Mental Inventory")
     c.setFont("Helvetica", 12)
 
-    c.drawString(x_pos[0], -initial_y_position-gap-10, "Working On:")
-    
-
-    c.drawString(x_pos[1], -initial_y_position-gap-10, "Should be Working On:")
-    
-
-    c.drawString(x_pos[2], -initial_y_position-gap-10, "Want to be Working On:")
+    c.drawString(x_pos[0], -initial_y_position-40, "Working On:")
+    c.drawString(x_pos[1], -initial_y_position-40, "Should be Working On:")
+    c.drawString(x_pos[2], -initial_y_position-40, "Want to be Working On:")
     
     c.setLineWidth(0.2)  # Set the line thickness (you can adjust this value)
     
     for x in [i * page_height//3  for i in range(1, 3)]:
         c.line(x, -page_width, x, 0)
         
-    c.line(10, -initial_y_position-gap+20, page_height-10, -initial_y_position-gap+20)
-    c.line(10, -initial_y_position-gap-30, page_height-10, -initial_y_position-gap-30)
+    c.line(10, -initial_y_position-10, page_height-10, -initial_y_position-10)
+    c.line(10, -initial_y_position-60, page_height-10, -initial_y_position-60)
     
     #c.setPageSize((612, 792))
     c.showPage()
@@ -257,4 +252,5 @@ c = canvas.Canvas("2024 Bullet Journal.pdf", pagesize=letter)
 # Call the function to create the PDF with the specified number of parts
 create_pdf(num_parts)
 
+# open file to check result
 open_pdf_file("2024 Bullet Journal.pdf")

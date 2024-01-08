@@ -83,6 +83,23 @@ def index():
     c.setFont("Helvetica-Bold", 16)
     c.drawString(x_position, initial_y_position, "Index")
     c.showPage()
+    
+def future_log():
+    # Third Page: Index
+    
+    # Set initial positions for the page
+    x_position = 10
+    y_border = 30
+    
+    page_width, page_height = letter
+    initial_y_position = page_height-y_border
+    
+    draw_lines(c, page_width, page_height, x_position)
+    
+    #c = canvas.Canvas(f"{num_parts}_parts_dates.pdf", pagesize=letter)
+    c.setFont("Helvetica-Bold", 16)
+    c.drawString(x_position, initial_y_position, "Future Log")
+    c.showPage()
 
 def birthdays():
     # Fourth Page: Birthdays
@@ -137,6 +154,7 @@ def appointments(month):
     c.setFont("Helvetica-Bold", 16)
     c.drawString(x_position, initial_y_position, f"{month} Appointments")
     c.showPage()
+    c.showPage()
         
         
 # Function to create a PDF with configurable number of parts for each date
@@ -164,6 +182,8 @@ def create_pdf(num_parts):
     
     index()
     birthdays()
+    future_log()
+    c.showPage()
     
     tasks("January")
     appointments("January")
@@ -215,7 +235,8 @@ def create_pdf(num_parts):
 
     c.save()
     print(f"PDF with {num_parts} parts per date generated successfully!")
-    open_pdf_file(f"{num_parts}_parts_dates.pdf")
+
+    
 
 def draw_lines(c, page_width, page_height, x_position):
         line_gap = 30
@@ -230,7 +251,10 @@ def draw_lines(c, page_width, page_height, x_position):
 # Define the number of parts you want
 num_parts = 2
 
-c = canvas.Canvas(f"{num_parts}_parts_dates.pdf", pagesize=letter)
+#c = canvas.Canvas(f"{num_parts}_parts_dates.pdf", pagesize=letter)
+c = canvas.Canvas("2024 Bullet Journal.pdf", pagesize=letter)
 
 # Call the function to create the PDF with the specified number of parts
 create_pdf(num_parts)
+
+open_pdf_file("2024 Bullet Journal.pdf")

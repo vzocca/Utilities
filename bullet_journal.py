@@ -12,7 +12,9 @@ from datetime import datetime, timedelta
 
 import subprocess
 
-
+# Set initial positions for the page
+x_position = 10
+y_border = 60
 
 def open_pdf_file(file_path):
     try:
@@ -65,10 +67,6 @@ def mental_inventory(c):
 def index():
     # Third Page: Index
     
-    # Set initial positions for the page
-    x_position = 10
-    y_border = 30
-    
     page_width, page_height = letter
     initial_y_position = page_height-y_border
     
@@ -82,10 +80,6 @@ def index():
 def future_log():
     # Third Page: Index
     
-    # Set initial positions for the page
-    x_position = 10
-    y_border = 30
-    
     page_width, page_height = letter
     initial_y_position = page_height-y_border
     
@@ -98,10 +92,6 @@ def future_log():
 
 def birthdays():
     # Fourth Page: Birthdays
-    
-    # Set initial positions for the page
-    x_position = 10
-    y_border = 30
     
     page_width, page_height = letter
     initial_y_position = page_height-y_border
@@ -120,10 +110,6 @@ def birthdays():
 def tasks(month):
     #c = canvas.Canvas(f"{num_parts}_parts_dates.pdf", pagesize=letter)
     
-    # Set initial positions for the page
-    x_position = 10
-    y_border = 30
-    
     page_width, page_height = letter
     initial_y_position = page_height-y_border
     
@@ -136,10 +122,6 @@ def tasks(month):
  
 def appointments(month):
     #c = canvas.Canvas(f"{num_parts}_parts_dates.pdf", pagesize=letter)
-    
-    # Set initial positions for the page
-    x_position = 10
-    y_border = 30
     
     page_width, page_height = letter
     initial_y_position = page_height-y_border
@@ -156,20 +138,17 @@ def appointments(month):
 def create_pdf(num_parts):
 
     # Starting date
-    start_date = datetime(2024, 1, 1)
+    start_date = datetime(2026, 1, 1)
     # Ending date
-    end_date = datetime(2024, 12, 31)
+    end_date = datetime(2026, 12, 31)
     
     page_width, page_height = letter
-
-    # Set initial positions for the first page
-    x_position = 10
-    y_border = 30
     
     initial_y_position = page_height-y_border
 
     # Set the gap between the parts
-    gap = (792-2*y_border)/num_parts
+    available_height = page_height + y_border
+    gap = (available_height-2*y_border)/num_parts
     
     initial_page("Valentino Zocca", "202 640 1381")
     
@@ -247,10 +226,10 @@ def draw_lines(c, page_width, page_height, x_position):
 num_parts = 2
 
 #c = canvas.Canvas(f"{num_parts}_parts_dates.pdf", pagesize=letter)
-c = canvas.Canvas("2024 Bullet Journal.pdf", pagesize=letter)
+c = canvas.Canvas("2026 Bullet Journal.pdf", pagesize=letter)
 
 # Call the function to create the PDF with the specified number of parts
 create_pdf(num_parts)
 
 # open file to check result
-open_pdf_file("2024 Bullet Journal.pdf")
+open_pdf_file("2026 Bullet Journal.pdf")
